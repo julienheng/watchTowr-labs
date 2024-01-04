@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "CVE-2023-22522",
+    "description": "Remote Code Execution Vulnerability on Atlassian Confluence Data Centers (8.6.0, 8.6.1).",
+    "affectedVersions": ["8.6.0", "8.6.1"],
+    "fixedVersions": ["8.6.2", "8.7.1"],
+    "tenants": [
+      {
+        "id": 1,
+        "name": "Juni",
+        "industry": "Healthcare",
+        "assets": [
+          {
+            "domain": "www.heyjuni.com",
+            "port": "443/TCP",
+            "assetType": "database",
+            "technology": "supabase",
+            "version": "8.6.0",
+            "status": "vulnerable",
+            "vulnerabilities": [
+              {
+                "id": "CVE-2023-22522",
+                "description": "Remote Code Execution",
+                "severity": "High",
+                "discoveredOn": "2023-01-10T08:45:00Z",
+                "remediationStatus": "Not Addressed"
+              }
+            ]
+          },
+          {
+            "ipAddress": "1.1.1.1",
+            "port": "443/TCP",
+            "assetType": "server",
+            "technology": "supabase",
+            "version": "8.6.1",
+            "status": "vulnerable",
+            "vulnerabilities": [
+              {
+                "id": "CVE-2023-22522",
+                "description": "Remote Code Execution",
+                "severity": "Medium",
+                "discoveredOn": "2023-01-10T08:45:00Z",
+                "remediationStatus": "Not Addressed"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "CVE-2023-22522",
+    "description": "Remote Code Execution Vulnerability on Atlassian Confluence Data Centers (8.6.0, 8.6.1).",
+    "affectedVersions": ["8.6.0", "8.6.1"],
+    "fixedVersions": ["8.6.2", "8.7.1"],
+    "tenants": [
+      {
+        "id": 1,
+        "name": "Juni",
+        "industry": "Healthcare",
+        "assets": [
+          {
+            "domain": "www.heyjuni.com",
+            "port": "443/TCP",
+            "assetType": "database",
+            "technology": "supabase",
+            "version": "8.6.0",
+            "status": "vulnerable",
+            "vulnerabilities": [
+              {
+                "id": "CVE-2023-22522",
+                "description": "Remote Code Execution",
+                "severity": "High",
+                "discoveredOn": "2023-01-10T08:45:00Z",
+                "remediationStatus": "Not Addressed"
+              }
+            ]
+          },
+          {
+            "ipAddress": "1.1.1.1",
+            "port": "443/TCP",
+            "assetType": "server",
+            "technology": "supabase",
+            "version": "8.6.1",
+            "status": "vulnerable",
+            "vulnerabilities": [
+              {
+                "id": "CVE-2023-22522",
+                "description": "Remote Code Execution",
+                "severity": "Medium",
+                "discoveredOn": "2023-01-10T08:45:00Z",
+                "remediationStatus": "Not Addressed"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
