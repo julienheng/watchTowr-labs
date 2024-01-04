@@ -1,7 +1,7 @@
-import "./App.css";
+import './App.css';
 
 function App() {
-  return <div className="text-7xl font-playfair p-2 ">App</div>;
+  return <div>App</div>;
 }
 
 export default App;
