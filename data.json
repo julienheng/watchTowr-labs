@@ -1,0 +1,38 @@
+{
+  "hunts": [
+    {
+      "huntId": "1",
+      "Vulnerability": "CVE-2023-22922-Remote Code Execution Vulnerability in Atlassian",
+      "Date Identified": "2023-09-01",
+      "Status": "Open",
+      "Tenants": [
+        {
+          "id": "1",
+          "name": "Tenant 1"
+        },
+        {
+          "id": "2",
+          "name": "Tenant 2"
+        }
+      ],
+      "Affected Assets": [
+        {
+          "Asset ID": 1,
+          "Tenant ID": 1,
+          "Subdomain": "confluence.example.com",
+          "Port": 8080,
+          "Technology": "Nextjs",
+          "Confluence Data Center (BAD)": true
+        },
+        {
+          "Asset ID": 2,
+          "Tenant ID": 2,
+          "Subdomain": "dev.example.com",
+          "Port": 8081,
+          "Technology": "Reactjs",
+          "Confluence Data Center (BAD)": true
+        }
+      ]
+    }
+  ]
+}
