@@ -9,6 +9,7 @@ export const useFetchData = () => {
     },
   });
 
+  console.log(data);
+
   return { data, isLoading, error };
 };
-

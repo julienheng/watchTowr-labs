@@ -1,6 +1,6 @@
 // COMPONENTS
 import SearchBar from '@/components/SearchBar/SearchBar';
-import DataTable from '@/components/DataTable/DataTable';
+import DashboardTable from '@/components/DashboardTable/DataTable';
 import DashboardTitle from './DashboardTitle';
 
 interface DashboardProps {}
@@ -10,7 +10,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
     <main>
       <DashboardTitle />
       <SearchBar />
-      <DataTable />
+      <DashboardTable />
     </main>
   );
 };

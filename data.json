@@ -2,37 +2,88 @@
   "hunts": [
     {
       "huntId": "1",
-      "Vulnerability": "CVE-2023-22922-Remote Code Execution Vulnerability in Atlassian",
-      "Date Identified": "2023-09-01",
-      "Status": "Open",
-      "Tenants": [
-        {
-          "id": "1",
-          "name": "Tenant 1"
+      "vulnerability": {
+        "name": "CVE-2023-22522",
+        "description": "Remote Code Execution on Atlassian Confluence Data Center.",
+        "affectedTechnologies": {
+          "name": ["Confluence Data Center", "Confluence Server"],
+          "version": ["8.6.0", "8.6.1"]
         },
-        {
-          "id": "2",
-          "name": "Tenant 2"
+        "fixedTechnologies": {
+          "name": ["Confluence Data Center", "Confluence Server", "Nodejs"],
+          "version": ["8.7.1", "8.6.2", "14"]
         }
-      ],
-      "Affected Assets": [
-        {
-          "Asset ID": 1,
-          "Tenant ID": 1,
-          "Subdomain": "confluence.example.com",
-          "Port": 8080,
-          "Technology": "Nextjs",
-          "Confluence Data Center (BAD)": true
+      },
+      "tenants": {
+        "id": "1",
+        "name": "Juni",
+        "industry": "Healthcare",
+        "assets": [
+          {
+            "assetId": 1,
+            "subdomain": "www.heyjuni.com",
+            "port": 8080,
+            "assetType": "database",
+            "technology": {
+              "name": "Confluence Data Center",
+              "version": "8.6.0"
+            }
+          },
+          {
+            "assetId": 2,
+            "ipAddress": "1.1.1.1",
+            "port": 8081,
+            "assetType": "Web Application",
+            "technology": {
+              "name": "Confluence Data Center",
+              "version": "8.6.1"
+            }
+          }
+        ]
+      }
+    },
+
+    {
+      "huntId": "2",
+      "vulnerability": {
+        "name": "CVE-2023-22522",
+        "description": "Remote Code Execution on Atlassian Confluence Data Center.",
+        "affectedTechnologies": {
+          "name": ["Confluence Data Center", "Confluence Server"],
+          "version": ["8.6.0", "8.6.1"]
         },
-        {
-          "Asset ID": 2,
-          "Tenant ID": 2,
-          "Subdomain": "dev.example.com",
-          "Port": 8081,
-          "Technology": "Reactjs",
-          "Confluence Data Center (BAD)": true
+        "fixedTechnologies": {
+          "name": ["Confluence Data Center", "Confluence Server", "Nodejs"],
+          "version": ["8.7.1", "8.6.2", "14"]
         }
-      ]
+      },
+      "tenants": {
+        "id": "2",
+        "name": "watchTowr",
+        "industry": "Cybersecurity",
+        "assets": [
+          {
+            "assetId": 1,
+            "subdomain": "confluence.watchTowr-example.com",
+            "port": "443/TCP",
+            "assetType": "database",
+            "technology": {
+              "name": "Confluence Data Center",
+              "version": "8.6.0"
+            }
+          },
+          {
+            "assetId": 2,
+            "ipAddress": "1.1.1.1",
+            "port": "80/TCP",
+            "assetType": "server",
+            "technology": {
+              "name": "Nodejs 14",
+              "version": "8.7.1"
+            }
+          }
+        ]
+      }
     }
   ]
 }
