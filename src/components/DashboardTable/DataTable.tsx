@@ -9,6 +9,8 @@ import {
   TableRow,
   TableCell,
 } from '@nextui-org/react';
+import { Link } from 'react-router-dom';
+import routes from '@/config/routes';
 
 interface DataTableProps {}
 
@@ -20,7 +22,7 @@ const DataTable: React.FC<DataTableProps> = () => {
       {isLoading ? (
         <Spinner size="lg" />
       ) : (
-        <Table aria-label="Example static collection table">
+        <Table aria-label="Static Table" className="mx-auto max-w-4xl">
           <TableHeader>
             <TableColumn>Hunt</TableColumn>
             <TableColumn>Vulnerability</TableColumn>
@@ -31,7 +33,9 @@ const DataTable: React.FC<DataTableProps> = () => {
               ({ huntId, vulnerability, tenants }: HuntType, index: number) => (
                 <TableRow key={index}>
                   <TableCell>{huntId}</TableCell>
-                  <TableCell>{vulnerability.name}</TableCell>
+                  <TableCell className="cursor-pointer">
+                    <Link to={routes.vulnerability}>{vulnerability.name}</Link>
+                  </TableCell>
                   <TableCell>{tenants.name}</TableCell>
                 </TableRow>
               ),

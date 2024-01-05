@@ -3,14 +3,9 @@ export type HuntType = {
   vulnerability: {
     name: string;
     description: string;
-    affectedTechnologies: {
-      name: string;
-      version: string;
-    }[];
-    fixedTechnologies: {
-      name: string;
-      version: string;
-    }[];
+    releasedDate: string;
+    affectedTechnologies: string[];
+    fixedTechnologies: string[];
   };
   tenants: {
     id: string;
@@ -22,10 +17,7 @@ export type HuntType = {
       ipAddress?: string;
       assetType: string;
       port: string;
-      technology: {
-        name: string;
-        version: string;
-      }[];
-    };
+      technology: string;
+    }[];
   };
 };

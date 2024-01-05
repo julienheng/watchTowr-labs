@@ -1,23 +1,30 @@
 import './App.css';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import routes from '@/config/routes';
 
 // COMPONENTS
-import Dashboard from '@/features/Dashboard/Dashboard';
+import Dashboard from '@/pages/Dashboard';
+import Vulnerability from './pages/Vulnerability';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0, // amount of time data in cache stays valid until refetched
+    },
+  },
+});
 
 function App() {
-  // const [data, dataSet] = useState([]);
-
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/hunts')
-  //     .then((response) => response.json())
-  //     .then((data) => dataSet(data))
-  //     .catch((error) => console.error(error));
-  // }, []);
-
-
   return (
-    <div>
-      <Dashboard />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route path={routes.home} element={<Dashboard />} />
+          <Route path={routes.vulnerability} element={<Vulnerability />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

@@ -1,7 +1,7 @@
 // COMPONENTS
 import SearchBar from '@/components/SearchBar/SearchBar';
 import DashboardTable from '@/components/DashboardTable/DataTable';
-import DashboardTitle from './DashboardTitle';
+import DashboardTitle from '../features/Dashboard/DashboardTitle';
 
 interface DashboardProps {}
 
