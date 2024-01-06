@@ -2,6 +2,7 @@ const routes = {
   home: '/',
   dashboard: '/dashboard',
   vulnerability: '/vulnerability',
+  tenant: '/tenant',
   notfound: '*',
 } as const;
 

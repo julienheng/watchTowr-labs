@@ -1,5 +1,6 @@
 export type HuntType = {
   huntId: string;
+  createdAt: string;
   vulnerability: {
     name: string;
     description: string;
@@ -13,10 +14,13 @@ export type HuntType = {
     industry: string;
     assets: {
       assetId: string;
-      subdomain?: string;
-      ipAddress?: string;
-      assetType: string;
-      port: string;
+      assetType: {
+        subdomain?: string;
+        ipAddress?: string;
+      };
+      attribute: {
+        port: string;
+      };
       technology: string;
     }[];
   };

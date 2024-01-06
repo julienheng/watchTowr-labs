@@ -3,18 +3,22 @@ import { HuntType } from '@/types/HuntType';
 import { Spinner } from '@nextui-org/react';
 import {
   Table,
+  TableBody,
   TableHeader,
   TableColumn,
-  TableBody,
   TableRow,
   TableCell,
 } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 import routes from '@/config/routes';
 
-interface DataTableProps {}
+interface DataTableProps {
+  filterValue?: string;
+}
+const columns = ['Hunt', 'Vulnerability', 'Tenants'];
 
-const DataTable: React.FC<DataTableProps> = () => {
+const DataTable: React.FC<DataTableProps> = (
+) => {
   const { data, isLoading } = useFetchData();
 
   return (
@@ -24,23 +28,25 @@ const DataTable: React.FC<DataTableProps> = () => {
       ) : (
         <Table aria-label="Static Table" className="mx-auto max-w-4xl">
           <TableHeader>
-            <TableColumn>Hunt</TableColumn>
-            <TableColumn>Vulnerability</TableColumn>
-            <TableColumn>Tenants</TableColumn>
+            {columns.map((column) => (
+              <TableColumn key={column}>{column}</TableColumn>
+            ))}
           </TableHeader>
           <TableBody>
             {data?.map(
               ({ huntId, vulnerability, tenants }: HuntType, index: number) => (
                 <TableRow key={index}>
                   <TableCell>{huntId}</TableCell>
-                  <TableCell className="cursor-pointer">
+                  <TableCell className="cursor-pointerhover:text-gray-500">
                     <Link to={routes.vulnerability}>{vulnerability.name}</Link>
                   </TableCell>
-                  <TableCell>{tenants.name}</TableCell>
+                  <TableCell className="hover:text-gray-500">
+                    <Link to={routes.tenant}>{tenants.name}</Link>
+                  </TableCell>
                 </TableRow>
               ),
             )}
-          </TableBody>
+            </TableBody>
         </Table>
       )}
     </>

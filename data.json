@@ -2,6 +2,8 @@
   "hunts": [
     {
       "huntId": "1",
+      "createdAt": "Tue, Dec 05 2023 21:00 PST",
+
       "vulnerability": {
         "name": "CVE-2023-22522",
         "description": "Remote Code Execution on Atlassian Confluence Data Center and Server.",
@@ -17,6 +19,7 @@
           "Nodejs 14"
         ]
       },
+
       "tenants": {
         "id": "1",
         "name": "Juni",
@@ -24,17 +27,25 @@
         "assets": [
           {
             "assetId": 1,
-            "subdomain": "www.heyjuni.com",
-            "port": 8080,
-            "assetType": "database",
+            "assetType": {
+              "subdomain": "www.heyjuni.com"
+            },
+            "attribute": {
+              "port": "443/TCP"
+            },
+
             "technology": "Confluence Data Center Versions 8.6.0"
           },
           {
             "assetId": 2,
-            "ipAddress": "1.1.1.1",
-            "port": 8081,
-            "assetType": "Web Application",
-            "technology": "Confluence Data Center Versions 8.6.1"
+            "assetType": {
+              "ipAddress": "1.1.1.1"
+            },
+            "attribute": {
+              "port": "80/TCP"
+            },
+
+            "technology": "Confluence Data Center Versions 8.6.0"
           }
         ]
       }
@@ -63,16 +74,24 @@
         "assets": [
           {
             "assetId": 1,
-            "subdomain": "confluence.watchTowr-example.com",
-            "port": "443/TCP",
-            "assetType": "database",
+            "assetType": {
+              "subdomain": "confluence.watchTowr-example.com"
+            },
+            "attribute": {
+              "port": "443/TCP"
+            },
+
             "technology": "Confluence Data Center Versions 8.6.0"
           },
           {
             "assetId": 2,
-            "ipAddress": "1.1.1.1",
-            "port": "80/TCP",
-            "assetType": "server",
+            "assetType": {
+              "ipAddress": "1.1.1.1"
+            },
+            "attribute": {
+              "port": "80/TCP"
+            },
+
             "technology": "Nodejs 14"
           }
         ]
