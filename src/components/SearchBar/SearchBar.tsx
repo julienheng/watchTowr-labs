@@ -1,62 +1,53 @@
-import { Input } from '@nextui-org/react';
-import { SearchIcon } from './SearchIcon';
-import { useFilterStore } from '@/stores/filterStore';
-import { useFetchData } from '@/hooks/useFetchData';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useFilterStore, useFilteredItemsStore } from '@/stores/filterStore';
+import { useTenantData, useAssetData } from '@/hooks/useFetchData';
+import { SearchBarInput } from './SearchBarInput';
 
-interface SearchBarProps {}
+interface HuntTypeProps {
+  [key: string]: any;
+}
 
-const SearchBar: React.FC<SearchBarProps> = () => {
-  const value = useFilterStore((state) => state.value);
-  const setValue = useFilterStore((state) => state.setValue);
+const SearchBar = () => {
+  const { value, setValue } = useFilterStore();
+  const { setFilteredItems } = useFilteredItemsStore();
 
-  const { data } = useFetchData();
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
+  const { data: tenantData } = useTenantData();
+  const { data: assetData } = useAssetData();
 
   const onSearch = (searchTerm: string) => {
     setValue(searchTerm);
   };
 
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const searchTerm = e.target.value;
+    setValue(searchTerm);
+
+    const filterFields = ['name', 'industry', 'assetName', 'assetId'];
+
+    const filteredItems = [...(tenantData || []), ...(assetData || [])].filter(
+      (item: HuntTypeProps) => {
+        const normalizedSearchTerm = searchTerm.toLowerCase();
+
+        return filterFields.some((field) => {
+          const tenantName = item[field].toLowerCase();
+          return (
+            tenantName.includes(normalizedSearchTerm) &&
+            tenantName !== normalizedSearchTerm
+          );
+        });
+      },
+    );
+
+    setFilteredItems(filteredItems || []);
+  };
+
   return (
-    <div className="mx-auto max-w-md">
-      <Input
-        label="Search"
-        variant="bordered"
-        radius="md"
-        onChange={handleSearch}
-        classNames={{
-          label: 'text-black/50 dark:text-white/90',
-        }}
-        placeholder="Asset, IP, Domain, Keyword ..."
-        endContent={
-          <SearchIcon
-            onClick={() => onSearch(value)}
-            className="pointer-events-none mb-0.5 flex-shrink-0 text-black"
-          />
-        }
-      />
-
-      <div className="flex flex-col border border-neutral-100">
-        {data
-          ?.filter((item) => {
-            const searchTerm = value.toLowerCase();
-            const clientName = item.name.toLowerCase();
-
-            return searchTerm && clientName.startsWith(searchTerm);
-          })
-          .map((item) => (
-            <div
-              key={item.name}
-              onClick={() => onSearch(item.name)}
-              className="cursor-pointer"
-            >
-              {item.name}
-            </div>
-          ))}
-      </div>
-    </div>
+    <SearchBarInput
+      handleSearch={handleSearch}
+      onSearch={onSearch}
+      value={value}
+    />
   );
 };
 

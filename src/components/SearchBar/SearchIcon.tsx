@@ -1,8 +1,8 @@
-interface SearchIconProps {
+type SearchIconProps = {
   props?: React.SVGProps<SVGSVGElement>;
   className?: string;
   onClick?: () => void;
- }
+};
 
 export const SearchIcon: React.FC<SearchIconProps> = (props) => (
   <svg

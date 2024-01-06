@@ -4,9 +4,7 @@ import { Card, CardBody } from '@nextui-org/react';
 import AssetDataTableHeader from './AssetDataTableHeader';
 import AssetDataTableBody from './AssetDataTableBody';
 
-interface DataTableProps {}
-
-const DataTable: React.FC<DataTableProps> = () => {
+const DataTable = () => {
   const { isLoading } = useFetchData();
 
   return (

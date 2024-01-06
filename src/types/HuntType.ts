@@ -19,9 +19,7 @@ export type HuntType = {
       subdomain?: string;
       ip?: string;
     };
-    attribute: {
-      port: string;
-    };
+    port: string;
     technology: string;
   }[];
 };
