@@ -1,0 +1,123 @@
+{
+  "tenants": [
+    {
+      "id": "T1",
+      "name": "Juni",
+      "industry": "Mental Health",
+      "assets": [
+        {
+          "assetId": "A101",
+          "assetName": "Web Server",
+          "assetType": {
+            "subdomain": "www.heyjuni.com"
+          },
+          "attribute": {
+            "port": "443/TCP"
+          },
+          "technology": "Confluence Data Center Versions 8.6.0"
+        },
+        {
+          "assetId": "A108",
+          "assetName": "Web Application",
+          "assetType": {
+            "ip": "1.1.1.1"
+          },
+          "attribute": {
+            "port": "80/TCP"
+          },
+          "technology": "Confluence Data Server Versions 8.6.1"
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "name": "Carousell",
+      "industry": "E-Commerce",
+      "assets": [
+        {
+          "assetId": "A104",
+          "assetName": "Network Firewall",
+          "assetType": {
+            "ip": "9.9.9.9"
+          },
+          "attribute": {
+            "port": "80/TCP"
+          },
+          "technology": "Nodejs 14"
+        },
+        {
+          "assetId": "A122",
+          "assetName": "Database",
+          "assetType": {
+            "subdomain": "www.carro-example.com"
+          },
+          "attribute": {
+            "port": "888/TCP"
+          },
+
+          "technology": "Confluence Data Center Versions 8.6.0"
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "name": "WatchTowr",
+      "industry": "Cybersecurity",
+      "assets": [
+        {
+          "assetId": "A111",
+          "assetName": "IoT Device",
+          "assetType": {
+            "subdomain": "confluence.watchTowr-example.com"
+          },
+          "attribute": {
+            "port": "443/TCP"
+          },
+          "technology": "Confluence Data Center Versions 8.6.0"
+        },
+        {
+          "assetId": "A120",
+          "assetName": "IP Address",
+          "assetType": {
+            "ip": "1.1.1.1"
+          },
+          "attribute": {
+            "port": "80/TCP"
+          },
+
+          "technology": "Nodejs 14"
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "name": "Carro",
+      "industry": "Share-Ride Service",
+      "assets": [
+        {
+          "assetId": "A106",
+          "assetName": "Network Firewall",
+          "assetType": {
+            "subdomain": "confluence.watchTowr-example.com"
+          },
+          "attribute": {
+            "port": "443/TCP"
+          },
+          "technology": "Confluence Data Center Versions 8.6.0"
+        },
+        {
+          "assetId": "A115",
+          "assetName": "Database Server",
+          "assetType": {
+            "ip": "1.1.1.1"
+          },
+          "attribute": {
+            "port": "80/TCP"
+          },
+
+          "technology": "Nodejs 14"
+        }
+      ]
+    }
+  ]
+}

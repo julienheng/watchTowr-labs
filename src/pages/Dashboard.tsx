@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // COMPONENTS
 import SearchBar from '@/components/SearchBar/SearchBar';
-import DashboardTable from '@/components/DashboardTable/DataTable';
+import DashboardTable from '@/components/DashboardTable/AssetDataTable';
 import DashboardTitle from '../features/Dashboard/DashboardTitle';
 
 interface DashboardProps {}

@@ -11,21 +11,7 @@ export type HuntType = {
 
   id: string;
   name: string;
-  assets: {
-    assetId: string;
-    assetName: string;
-    assetType: {
-      subdomain?: string;
-      ip?: string;
-    };
-    attribute: {
-      port: string;
-    };
-    technology: string;
-  }[];
-};
-
-export type AssetType = {
+  industry: string;
   assets: {
     assetId: string;
     assetName: string;

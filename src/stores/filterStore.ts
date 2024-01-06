@@ -1,13 +1,13 @@
 import { create } from 'zustand';
 
 type FilterStore = {
-  filter: string;
-  setFilter: (filter: string) => void;
+  value: string;
+  setValue: (value: string) => void;
 };
 
 export const useFilterStore = create<FilterStore>((set) => ({
-  filter: '',
-  setFilter: () => {
-    set((state) => ({ filter: state.filter }));
+  value: '',
+  setValue: (newValue: string) => {
+    set({ value: newValue });
   },
 }));
