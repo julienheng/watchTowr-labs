@@ -1,0 +1,103 @@
+{
+  "assets": [
+    {
+      "id": "A101",
+      "tenantId": "T1",
+      "assetName": "Web Server",
+      "assetType": {
+        "subdomain": "www.heyjuni.com"
+      },
+      "attribute": {
+        "port": "443/TCP"
+      },
+      "technology": "Confluence Data Center Versions 8.6.0"
+    },
+    {
+      "id": "A108",
+      "tenantId": "T4",
+      "assetName": "Web Application",
+      "assetType": {
+        "ip": "1.1.1.1"
+      },
+      "attribute": {
+        "port": "80/TCP"
+      },
+      "technology": "Confluence Data Server Versions 8.6.1"
+    },
+    {
+      "id": "A104",
+      "tenantId": "T3",
+      "assetName": "Network Firewall",
+      "assetType": {
+        "ip": "9.9.9.9"
+      },
+      "attribute": {
+        "port": "80/TCP"
+      },
+      "technology": "Nodejs 14"
+    },
+    {
+      "id": "A122",
+      "tenantId": "T2",
+      "assetName": "Database",
+      "assetType": {
+        "subdomain": "www.carro-example.com"
+      },
+      "attribute": {
+        "port": "888/TCP"
+      },
+
+      "technology": "Confluence Data Center Versions 8.6.0"
+    },
+    {
+      "id": "A111",
+      "tenantId": "T3",
+      "assetName": "IoT Device",
+      "assetType": {
+        "subdomain": "confluence.watchTowr-example.com"
+      },
+      "attribute": {
+        "port": "443/TCP"
+      },
+      "technology": "Confluence Data Center Versions 8.6.0"
+    },
+    {
+      "id": "A120",
+      "tenantId": "T1",
+      "assetName": "IP Address",
+      "assetType": {
+        "ip": "1.1.1.1"
+      },
+      "attribute": {
+        "port": "80/TCP"
+      },
+
+      "technology": "Nodejs 14"
+    },
+    {
+      "id": "A106",
+      "tenantId": "T2",
+      "assetName": "Network Firewall",
+      "assetType": {
+        "subdomain": "confluence.watchTowr-example.com"
+      },
+      "attribute": {
+        "port": "443/TCP"
+      },
+      "technology": "Confluence Data Center Versions 8.6.0"
+    },
+    {
+      "id": "A115",
+      "tenantId": "T4",
+      "assetName": "Database Server",
+      "assetType": {
+        "ip": "1.1.1.1"
+      },
+      "attribute": {
+        "port": "80/TCP"
+      },
+
+      "technology": "Nodejs 14"
+    }
+  ]
+}

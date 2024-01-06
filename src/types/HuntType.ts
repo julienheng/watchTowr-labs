@@ -1,27 +1,41 @@
 export type HuntType = {
-  huntId: string;
-  createdAt: string;
-  vulnerability: {
-    name: string;
-    description: string;
-    releasedDate: string;
-    affectedTechnologies: string[];
-    fixedTechnologies: string[];
-  };
-  tenants: {
-    id: string;
-    name: string;
-    industry: string;
-    assets: {
-      assetId: string;
-      assetType: {
-        subdomain?: string;
-        ipAddress?: string;
-      };
-      attribute: {
-        port: string;
-      };
-      technology: string;
-    }[];
-  };
+  // huntId: string;
+  // createdAt: string;
+  // vulnerability: {
+  //   name: string;
+  //   description: string;
+  //   releasedDate: string;
+  //   affectedTechnologies: string[];
+  //   fixedTechnologies: string[];
+  // };
+
+  id: string;
+  name: string;
+  assets: {
+    assetId: string;
+    assetName: string;
+    assetType: {
+      subdomain?: string;
+      ip?: string;
+    };
+    attribute: {
+      port: string;
+    };
+    technology: string;
+  }[];
+};
+
+export type AssetType = {
+  assets: {
+    assetId: string;
+    assetName: string;
+    assetType: {
+      subdomain?: string;
+      ip?: string;
+    };
+    attribute: {
+      port: string;
+    };
+    technology: string;
+  }[];
 };

@@ -7,16 +7,10 @@ import DashboardTitle from '../features/Dashboard/DashboardTitle';
 interface DashboardProps {}
 
 const Dashboard: React.FC<DashboardProps> = () => {
-
-
-
-  
   return (
     <main>
       <DashboardTitle />
-      <SearchBar
-     
-      />
+      <SearchBar />
       <DashboardTable />
     </main>
   );
