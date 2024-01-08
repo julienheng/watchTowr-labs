@@ -1,17 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useFilterStore, useFilteredItemsStore } from '@/stores/filterStore';
-import { useTenantData, useAssetData } from '@/hooks/useFetchData';
+import { useAssetData } from '@/hooks/useFetchData';
 import { SearchBarInput } from './SearchBarInput';
-
-interface HuntTypeProps {
-  [key: string]: any;
-}
+import { AssetType } from '@/types/AssetType';
 
 const SearchBar = () => {
   const { value, setValue } = useFilterStore();
   const { setFilteredItems } = useFilteredItemsStore();
 
-  const { data: tenantData } = useTenantData();
   const { data: assetData } = useAssetData();
 
   const onSearch = (searchTerm: string) => {
@@ -19,26 +15,31 @@ const SearchBar = () => {
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const searchTerm = e.target.value;
-    setValue(searchTerm);
+    setValue(e.target.value);
 
-    const filterFields = ['name', 'industry', 'assetName', 'assetId'];
+    const filterFields = [
+      'assetId',
+      'assetName',
+      'client',
+      'port',
+      'ip',
+      'subdomain',
+      'technology',
+      'status',
+      'version',
+    ];
 
-    const filteredItems = [...(tenantData || []), ...(assetData || [])].filter(
-      (item: HuntTypeProps) => {
-        const normalizedSearchTerm = searchTerm.toLowerCase();
+    const filteredItems = assetData?.filter((item: AssetType) => {
+      const searchTerm = e.target.value.toLowerCase();
 
-        return filterFields.some((field) => {
-          const tenantName = item[field].toLowerCase();
-          return (
-            tenantName.includes(normalizedSearchTerm) &&
-            tenantName !== normalizedSearchTerm
-          );
-        });
-      },
-    );
+      return filterFields.some((field) => {
+        const fieldValue = (item as any)[field];
+        const filteredValue = fieldValue ? fieldValue.toLowerCase() : '';
+        return filteredValue.startsWith(searchTerm);
+      });
+    });
 
+    // set filtered items to be used in the table
     setFilteredItems(filteredItems || []);
   };
 

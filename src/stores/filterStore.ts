@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { TenantType } from '@/types/TenantType';
 import { AssetType } from '@/types/AssetType';
 
 type FilterStore = {
@@ -15,8 +14,8 @@ export const useFilterStore = create<FilterStore>((set) => ({
 }));
 
 type FilteredItemsStore = {
-  filteredItems: (TenantType | AssetType)[];
-  setFilteredItems: (items: TenantType[]) => void;
+  filteredItems: AssetType[];
+  setFilteredItems: (items: AssetType[]) => void;
 };
 
 export const useFilteredItemsStore = create<FilteredItemsStore>((set) => ({

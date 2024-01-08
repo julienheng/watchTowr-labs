@@ -19,7 +19,7 @@ export const SearchBarInput: React.FC<SearchBarInputProps> = ({
     radius="md"
     onChange={handleSearch}
     value={value}
-    className="mx-auto max-w-xl"
+    className="mx-auto max-w-md"
     classNames={{
       label: 'text-black/50 dark:text-white/90',
     }}
