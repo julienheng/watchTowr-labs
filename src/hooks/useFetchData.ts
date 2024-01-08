@@ -3,7 +3,6 @@ import { AssetType } from '@/types/AssetType';
 import { TenantType } from '@/types/TenantType';
 import { useThreatStore } from '@/stores/threatStateStore';
 
-
 export const useAssetData = () => {
   const setThreatValue = useThreatStore((state) => state.setThreatValue);
 
@@ -17,9 +16,9 @@ export const useAssetData = () => {
   );
 
   // Find the number of affected assets
-  const affectedNum = data?.filter((item) => item.status === 'vulnerable')?.length;
+  const affectedNum = data?.filter((item) => item.status === 'vulnerable')
+    ?.length;
   setThreatValue(affectedNum || 0);
-
 
   return { data, isLoading, error };
 };

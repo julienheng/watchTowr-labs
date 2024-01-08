@@ -5,9 +5,7 @@ import routes from '@/config/routes';
 
 // COMPONENTS
 import Dashboard from '@/pages/Dashboard';
-import Vulnerability from '@/pages/Vulnerability';
 import PageNotFound from '@/pages/PageNotFound';
-import Tenant from '@/pages/Tenant';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,8 +21,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={routes.home} element={<Dashboard />} />
-          <Route path={routes.vulnerability} element={<Vulnerability />} />
-          <Route path={routes.tenant} element={<Tenant />} />
           <Route path={routes.notfound} element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

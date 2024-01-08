@@ -1,5 +1,4 @@
 import { useAssetData } from '@/hooks/useFetchData';
-
 import {
   Table,
   TableHeader,
@@ -13,9 +12,6 @@ import { useFilteredItemsStore } from '@/stores/filterStore';
 const DataTable = () => {
   const filteredData = useFilteredItemsStore((state) => state.filteredItems);
   const { data: assetData } = useAssetData();
-  const x = assetData?.map((item) => item.status);
-  console.log(x);
-
   const data = filteredData.length > 0 ? filteredData : assetData;
 
   const columns = [
@@ -59,7 +55,6 @@ const DataTable = () => {
               <TableCell>{subdomain ? subdomain : ip}</TableCell>
               <TableCell>{technology}</TableCell>
               <TableCell
-                // className={`${status === 'vulnerable' && 'text-red-500'}`}
               >
                 {status}
               </TableCell>
