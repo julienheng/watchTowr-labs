@@ -12,10 +12,9 @@ import {
   useAssetAffectedStore,
   useAssetAssignedStore,
   useAssetHuntedStore,
-  useAssetStore,
+  useTotalAssetStore,
 } from '@/stores/assetCaseStore';
 import { useSecurityStore } from '@/stores/securityStore';
-import { useThreatStore } from '@/stores/threatStateStore';
 
 type entryType = {
   name: string;
@@ -31,22 +30,22 @@ interface PayloadItem {
 interface DashboardPieChartProps {}
 
 const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
-  const totalAsset = useAssetStore((state) => state.asset);
-  const totalAffected = useAssetAffectedStore((state) => state.affectedCase);
+  const totalAsset = useTotalAssetStore((state) => state.totalAsset);
   const totalHunted = useAssetHuntedStore((state) => state.huntedCase);
   const totalAssigned = useAssetAssignedStore((state) => state.assignedCase);
+  const totalAffected = useAssetAffectedStore((state) => state.affectedCase);
   const security = useSecurityStore((state) => state.securityValue);
-  const threat = useThreatStore((state) => state.threatValue);
+
 
   const securityData: entryType = [
     {
       name: 'Security',
-      value: security - threat,
+      value: security - totalAffected,
       color: '#22c55e',
     },
     {
       name: 'Threat',
-      value: threat,
+      value: totalAffected,
       color: '#ef4444',
     },
   ];

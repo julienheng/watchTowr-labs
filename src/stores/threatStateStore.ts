@@ -6,7 +6,7 @@ type ThreatStore = {
 };
 
 export const useThreatStore = create<ThreatStore>((set) => ({
-  threatValue: 4,
+  threatValue: 0,
   setThreatValue: (newValue: number) => {
     set({ threatValue: newValue });
   },

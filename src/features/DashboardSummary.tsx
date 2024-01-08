@@ -2,36 +2,23 @@ import CardLayout from '../components/CardLayout';
 import {
   useAssetAffectedStore,
   useAssetAssignedStore,
-  useAssetStore,
+  useTotalAssetStore,
 } from '@/stores/assetCaseStore';
 import { Icon } from '@iconify/react';
 import { Card, CardBody } from '@nextui-org/react';
-import { useAssetData } from '@/hooks/useFetchData';
-import { useEffect } from 'react';
 
-interface CasesHuntedCardProps {}
+interface DashboardSummaryProps {}
 
-const CasesHuntedCard: React.FC<CasesHuntedCardProps> = () => {
-  const { data: assetData } = useAssetData();
-  const { asset, setAsset } = useAssetStore();
-  const { affectedCase, setAffectedCase } = useAssetAffectedStore();
+const DashboardSummary: React.FC<DashboardSummaryProps> = () => {
+  const totalAsset = useTotalAssetStore((state) => state.totalAsset);
+  const affectedCase = useAssetAffectedStore((state) => state.affectedCase);
   const totalAssigned = useAssetAssignedStore((state) => state.assignedCase);
-
-  useEffect(() => {
-    if (assetData) {
-      setAsset(assetData?.length);
-      const initialAffectedAsset = assetData?.filter(
-        (item) => item.status === 'vulnerable',
-      )?.length;
-      setAffectedCase(initialAffectedAsset);
-    }
-  }, [assetData, setAsset, setAffectedCase]);
 
   const data = [
     {
       title: 'Total Assets',
       icon: 'game-icons:human-target',
-      number: asset,
+      number: totalAsset,
       textColor: 'text-blue-500',
       iconColor: '#3b82f6',
     },
@@ -78,4 +65,4 @@ const CasesHuntedCard: React.FC<CasesHuntedCardProps> = () => {
   );
 };
 
-export default CasesHuntedCard;
+export default DashboardSummary;

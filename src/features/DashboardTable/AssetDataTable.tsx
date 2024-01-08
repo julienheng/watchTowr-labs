@@ -9,10 +9,10 @@ import {
 } from '@nextui-org/react';
 import { useFilteredItemsStore } from '@/stores/filterStore';
 
-const DataTable = () => {
-  const filteredData = useFilteredItemsStore((state) => state.filteredItems);
+const AssetDataTable = () => {
+  const filteredItems = useFilteredItemsStore((state) => state.filteredItems);
   const { data: assetData } = useAssetData();
-  const data = filteredData.length > 0 ? filteredData : assetData;
+  const data = filteredItems.length > 0 ? filteredItems : assetData;
 
   const columns = [
     'Client',
@@ -36,7 +36,7 @@ const DataTable = () => {
         ))}
       </TableHeader>
       <TableBody>
-        {(data || []).map(
+        {(data || [])?.map(
           ({
             client,
             assetId,
@@ -46,18 +46,13 @@ const DataTable = () => {
             technology,
             status,
           }) => (
-            <TableRow
-              key={assetId}
-            >
+            <TableRow key={assetId}>
               <TableCell>{client}</TableCell>
               <TableCell>{assetId}</TableCell>
               <TableCell>{assetName}</TableCell>
               <TableCell>{subdomain ? subdomain : ip}</TableCell>
               <TableCell>{technology}</TableCell>
-              <TableCell
-              >
-                {status}
-              </TableCell>
+              <TableCell>{status}</TableCell>
             </TableRow>
           ),
         )}
@@ -66,4 +61,4 @@ const DataTable = () => {
   );
 };
 
-export default DataTable;
+export default AssetDataTable;

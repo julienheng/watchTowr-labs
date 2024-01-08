@@ -4,11 +4,24 @@ import { useAssetData } from '@/hooks/useFetchData';
 import { SearchBarInput } from '../components/SearchBarInput';
 import { AssetType } from '@/types/AssetType';
 
+const filterFields = [
+  'assetId',
+  'assetName',
+  'client',
+  'port',
+  'ip',
+  'subdomain',
+  'technology',
+  'status',
+  'version',
+];
+
 const SearchBar = () => {
   const { value, setValue } = useFilterStore();
-  const { setFilteredItems } = useFilteredItemsStore();
-
-  const { data: assetData } = useAssetData();
+  const setFilteredItems = useFilteredItemsStore(
+    (state) => state.setFilteredItems,
+  );
+  const { data } = useAssetData();
 
   const onSearch = (searchTerm: string) => {
     setValue(searchTerm);
@@ -17,19 +30,7 @@ const SearchBar = () => {
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
 
-    const filterFields = [
-      'assetId',
-      'assetName',
-      'client',
-      'port',
-      'ip',
-      'subdomain',
-      'technology',
-      'status',
-      'version',
-    ];
-
-    const filteredItems = assetData?.filter((item: AssetType) => {
+    const filteredItems = data?.filter((item: AssetType) => {
       const searchTerm = e.target.value.toLowerCase();
 
       return filterFields.some((field) => {

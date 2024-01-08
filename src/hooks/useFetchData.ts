@@ -1,10 +1,11 @@
 import { useQuery } from 'react-query';
 import { AssetType } from '@/types/AssetType';
 import { TenantType } from '@/types/TenantType';
-import { useThreatStore } from '@/stores/threatStateStore';
+// import { useThreatStore } from '@/stores/threatStateStore';
+// import { useAssetStateStore } from '@/stores/assetStateStore';
 
 export const useAssetData = () => {
-  const setThreatValue = useThreatStore((state) => state.setThreatValue);
+  // const setThreatValue = useThreatStore((state) => state.setThreatValue);
 
   const { data, isLoading, error } = useQuery<AssetType[]>(
     'assets',
@@ -15,10 +16,6 @@ export const useAssetData = () => {
     },
   );
 
-  // Find the number of affected assets
-  const affectedNum = data?.filter((item) => item.status === 'vulnerable')
-    ?.length;
-  setThreatValue(affectedNum || 0);
 
   return { data, isLoading, error };
 };

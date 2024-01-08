@@ -2,8 +2,8 @@
 import SearchBar from '@/features/SearchBar';
 import DashboardTable from '@/features/DashboardTable/AssetDataTable';
 import DashboardTitle from '../features/DashboardTitle';
-import CasesHuntedCard from '@/features/DashboardSummary';
 import DashboardPieChart from '@/features/PieChart/DashboardPieChart';
+import DashboardSummary from '@/features/DashboardSummary';
 
 interface DashboardProps {}
 
@@ -13,7 +13,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
       <DashboardTitle />
       <div className="flex max-w-5xl mx-auto justify-between ">
         <div className="flex flex-col justify-evenly gap-6">
-          <CasesHuntedCard />
+          <DashboardSummary />
           <SearchBar />
         </div>
         <DashboardPieChart />

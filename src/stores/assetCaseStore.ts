@@ -1,15 +1,15 @@
 import { create } from 'zustand';
 
 // TOTAL ASSET CASES
-type AssetStore = {
-  asset: number;
-  setAsset: (value: number) => void;
+type TotalAssetStore = {
+  totalAsset: number;
+  setTotalAsset: (value: number) => void;
 };
 
-export const useAssetStore = create<AssetStore>((set) => ({
-  asset: 0,
-  setAsset: (newCase: number) => {
-    set({ asset: newCase });
+export const useTotalAssetStore = create<TotalAssetStore>((set) => ({
+  totalAsset: 10,
+  setTotalAsset: (newCase: number) => {
+    set({ totalAsset: newCase });
   },
 }));
 
@@ -20,7 +20,7 @@ type AssetHuntedStore = {
 };
 
 export const useAssetHuntedStore = create<AssetHuntedStore>((set) => ({
-  huntedCase: 2,
+  huntedCase: 0,
   setHuntedCase: (newCase: number) => {
     set({ huntedCase: newCase });
   },
@@ -33,7 +33,7 @@ type AssetAffectedStore = {
 };
 
 export const useAssetAffectedStore = create<AssetAffectedStore>((set) => ({
-  affectedCase: 4,
+  affectedCase: 6,
   setAffectedCase: (newCase: number) => {
     set({ affectedCase: newCase });
   },
