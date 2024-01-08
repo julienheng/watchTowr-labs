@@ -1,11 +1,15 @@
 import { Card, CardProps, CardBody } from '@nextui-org/react';
 
-export interface CardLayoutProps extends CardProps {}
+
+export interface CardLayoutProps extends CardProps {
+}
 
 const CardLayout: React.FC<CardLayoutProps> = ({ children }) => {
   return (
-    <Card>
-      <CardBody>{children}</CardBody>
+    <Card className="p-2">
+      <CardBody>
+        {children}
+      </CardBody>
     </Card>
   );
 };

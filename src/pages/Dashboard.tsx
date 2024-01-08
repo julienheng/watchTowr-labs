@@ -1,8 +1,9 @@
 // COMPONENTS
-import SearchBar from '@/components/SearchBar/SearchBar';
-import DashboardTable from '@/components/DashboardTable/AssetDataTable';
-import DashboardTitle from '../features/Dashboard/DashboardTitle';
-import CasesHuntedCard from '@/components/DashboardCards/CasesHuntedCard';
+import SearchBar from '@/features/SearchBar';
+import DashboardTable from '@/features/Dashboard/DashboardTable/AssetDataTable';
+import DashboardTitle from '../features/DashboardTitle';
+import CasesHuntedCard from '@/features/DashboardSummary';
+import DashboardPieChart from '@/features/Dashboard/PieChart/DashboardPieChart';
 
 interface DashboardProps {}
 
@@ -10,8 +11,9 @@ const Dashboard: React.FC<DashboardProps> = () => {
   return (
     <main>
       <DashboardTitle />
-      <div className="flex">
+      <div className="mx-auto flex max-w-5xl items-center">
         <CasesHuntedCard />
+        <DashboardPieChart />
         <SearchBar />
       </div>
       <DashboardTable />

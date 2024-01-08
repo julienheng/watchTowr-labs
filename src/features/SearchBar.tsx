@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useFilterStore, useFilteredItemsStore } from '@/stores/filterStore';
 import { useAssetData } from '@/hooks/useFetchData';
-import { SearchBarInput } from './SearchBarInput';
+import { SearchBarInput } from '../components/SearchBarInput';
 import { AssetType } from '@/types/AssetType';
 
 const SearchBar = () => {
