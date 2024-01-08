@@ -35,7 +35,7 @@
       "port": "443/TCP",
       "technology": "Confluence Data Center",
       "version": "8.6.0",
-      "status": "low"
+      "status": "vulnerable"
     },
     {
       "assetId": "A108",
@@ -45,7 +45,7 @@
       "port": "80/TCP",
       "technology": "Confluence Data Server",
       "version": "8.6.1",
-      "status": "low"
+      "status": "vulnerable"
     },
     {
       "assetId": "A104",
@@ -65,7 +65,7 @@
       "port": "888/TCP",
       "technology": "Confluence Data Center",
       "version": "8.6.0",
-      "status": "affected"
+      "status": "vulnerable"
     },
     {
       "assetId": "A111",
@@ -74,8 +74,18 @@
       "subdomain": "confluence.watchTowr-example.com",
       "port": "443/TCP",
       "technology": "Confluence Data Center",
-      "version": "8.6.0",
-      "status": "affected"
+      "version": "8.6.1",
+      "status": "vulnerable"
+    },
+    {
+      "assetId": "A113",
+      "assetName": "Device System",
+      "client": "Oceanus",
+      "ip": "2.2.5.5",
+      "port": "333/TCP",
+      "technology": "Confluence Data Server",
+      "version": "8.7.1",
+      "status": "fixed"
     },
     {
       "assetId": "A120",
@@ -85,7 +95,17 @@
       "port": "80/TCP",
       "technology": "Nodejs",
       "version": "14",
-      "status": "fixed"
+      "status": "unaffected"
+    },
+    {
+      "assetId": "A119",
+      "assetName": "Employee Laptop",
+      "client": "Oceanus",
+      "subdomain": "www.oceanus-example.com",
+      "port": "1818/TCP",
+      "technology": "Confluence Data Server",
+      "version": "8.6.1",
+      "status": "vulnerable"
     },
     {
       "assetId": "A106",
@@ -95,7 +115,7 @@
       "port": "443/TCP",
       "technology": "Confluence Data Center",
       "version": "8.6.0",
-      "status": "low"
+      "status": "vulnerable"
     },
     {
       "assetId": "A115",

@@ -1,7 +1,7 @@
 import CardLayout from '../components/CardLayout';
 import {
   useAssetAffectedStore,
-  useAssetHuntedStore,
+  useAssetAssignedStore,
   useAssetStore,
 } from '@/stores/assetCaseStore';
 import { Icon } from '@iconify/react';
@@ -14,14 +14,18 @@ interface CasesHuntedCardProps {}
 const CasesHuntedCard: React.FC<CasesHuntedCardProps> = () => {
   const { data: assetData } = useAssetData();
   const { asset, setAsset } = useAssetStore();
-  const totalAffected = useAssetAffectedStore((state) => state.case);
-  const totalHunted = useAssetHuntedStore((state) => state.case);
+  const { affectedCase, setAffectedCase } = useAssetAffectedStore();
+  const totalAssigned = useAssetAssignedStore((state) => state.assignedCase);
 
   useEffect(() => {
     if (assetData) {
-      setAsset(assetData?.length); // Update case based on fetched total asset in data
+      setAsset(assetData?.length);
+      const initialAffectedAsset = assetData?.filter(
+        (item) => item.status === 'vulnerable',
+      )?.length;
+      setAffectedCase(initialAffectedAsset);
     }
-  }, [assetData, setAsset]);
+  }, [assetData, setAsset, setAffectedCase]);
 
   const data = [
     {
@@ -29,28 +33,28 @@ const CasesHuntedCard: React.FC<CasesHuntedCardProps> = () => {
       icon: 'game-icons:human-target',
       number: asset,
       textColor: 'text-blue-500',
-      iconColor: 'blue',
+      iconColor: '#3b82f6',
     },
     {
       title: 'Asset Affected',
       icon: 'solar:danger-circle-broken',
-      number: totalAffected,
-      textColor: 'text-red-500',
-      iconColor: 'red',
+      number: affectedCase,
+      textColor: 'text-orange-500',
+      iconColor: '#f97316',
     },
     {
       title: 'Asset Assigned',
       icon: 'material-symbols-light:assignment-turned-in-outline',
-      number: totalHunted,
-      textColor: 'text-orange-500',
-      iconColor: 'orange',
+      number: totalAssigned,
+      textColor: 'text-pink-500',
+      iconColor: '#ec4899',
     },
   ];
 
   return (
     <>
       <CardLayout>
-        <Card className="p-2">
+        <Card className="p-3">
           <CardBody className="flex flex-row gap-8">
             {data.map(
               ({ title, icon, number, textColor, iconColor }, index) => (

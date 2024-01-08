@@ -14,11 +14,12 @@ export default {
       },
       color: {
         red: '#ef4444',
-        yellow: '#f59e0b',
-        green: '#10b981',
+        yellow: '#eab308',
+        green: '#22c55e',
         purple: '#a855f7',
         orange: '#f97316',
         blue: '#3b82f6',
+        pink: '#ec4899'
       },
       screens: {
         mobile: { min: '320px', max: '567px' },

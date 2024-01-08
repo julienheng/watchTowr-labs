@@ -13,6 +13,8 @@ import { useFilteredItemsStore } from '@/stores/filterStore';
 const DataTable = () => {
   const filteredData = useFilteredItemsStore((state) => state.filteredItems);
   const { data: assetData } = useAssetData();
+  const x = assetData?.map((item) => item.status);
+  console.log(x);
 
   const data = filteredData.length > 0 ? filteredData : assetData;
 
@@ -48,13 +50,19 @@ const DataTable = () => {
             technology,
             status,
           }) => (
-            <TableRow key={assetId}>
+            <TableRow
+              key={assetId}
+            >
               <TableCell>{client}</TableCell>
               <TableCell>{assetId}</TableCell>
               <TableCell>{assetName}</TableCell>
               <TableCell>{subdomain ? subdomain : ip}</TableCell>
               <TableCell>{technology}</TableCell>
-              <TableCell>{status}</TableCell>
+              <TableCell
+                // className={`${status === 'vulnerable' && 'text-red-500'}`}
+              >
+                {status}
+              </TableCell>
             </TableRow>
           ),
         )}

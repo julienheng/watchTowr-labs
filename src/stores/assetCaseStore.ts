@@ -15,26 +15,39 @@ export const useAssetStore = create<AssetStore>((set) => ({
 
 // HUNTED ASSET CASES
 type AssetHuntedStore = {
-  case: number;
-  setCase: (value: number) => void;
+  huntedCase: number;
+  setHuntedCase: (value: number) => void;
 };
 
 export const useAssetHuntedStore = create<AssetHuntedStore>((set) => ({
-  case: 8,
-  setCase: (newCase: number) => {
-    set({ case: newCase });
+  huntedCase: 2,
+  setHuntedCase: (newCase: number) => {
+    set({ huntedCase: newCase });
   },
 }));
 
 // AFFECTED ASSET CASES
 type AssetAffectedStore = {
-  case: number;
-  setCase: (value: number) => void;
+  affectedCase: number;
+  setAffectedCase: (value: number) => void;
 };
 
 export const useAssetAffectedStore = create<AssetAffectedStore>((set) => ({
-  case: 4,
-  setCase: (newCase: number) => {
-    set({ case: newCase });
+  affectedCase: 4,
+  setAffectedCase: (newCase: number) => {
+    set({ affectedCase: newCase });
+  },
+}));
+
+// ASSIGNED ASSET CASES
+type AssetAssignedStore = {
+  assignedCase: number;
+  setAssignedCase: (value: number) => void;
+};
+
+export const useAssetAssignedStore = create<AssetAssignedStore>((set) => ({
+  assignedCase: 0,
+  setAssignedCase: (newCase: number) => {
+    set({ assignedCase: newCase });
   },
 }));

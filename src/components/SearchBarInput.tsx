@@ -17,17 +17,19 @@ export const SearchBarInput: React.FC<SearchBarInputProps> = ({
     label="Search"
     variant="bordered"
     radius="md"
+    size="sm"
+    color="primary"
     onChange={handleSearch}
     value={value}
-    className="mx-auto max-w-md"
+    className="group mx-auto max-w-md "
     classNames={{
-      label: 'text-black/50 dark:text-white/90',
+      label: 'text-neutral-700',
     }}
     placeholder="Asset, IP, Domain, Keyword ..."
     endContent={
       <SearchIcon
         onClick={() => onSearch(value)}
-        className="pointer-events-none mb-0.5 flex-shrink-0 text-black"
+        className="pointer-events-none mb-0.5 flex-shrink-0 text-neutral-500 "
       />
     }
     {...props}
