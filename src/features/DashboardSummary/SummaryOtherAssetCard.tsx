@@ -21,7 +21,7 @@ const SummaryOtherAssetCard: React.FC<SummaryOtherAssetCardProps> = ({
           .slice(1)
           .map(({ title, icon, number, textColor, iconColor }, index) => (
             <div key={index}>
-              <h1 className="font-playfair text-sm font-semibold">{title}</h1>
+              <h1 className="font-oswald text-lg font-semibold">{title}</h1>
               <div className="flex items-center justify-around">
                 <Icon
                   className="text-5xl"

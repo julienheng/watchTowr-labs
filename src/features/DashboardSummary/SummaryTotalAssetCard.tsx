@@ -17,7 +17,7 @@ const SummaryTotalAssetCard: React.FC<SummaryTotalAssetCardProps> = ({
   return (
     <Card className="p-3">
       <CardBody>
-        <h1 className="text-center font-playfair text-sm font-semibold">
+        <h1 className="text-center font-oswald text-lg font-semibold">
           Total Assets
         </h1>
         <div className="flex items-center justify-around">

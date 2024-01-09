@@ -50,7 +50,7 @@ const DashboardAssetSummary: React.FC<DashboardAssetSummaryProps> = () => {
   return (
     <>
       <CardLayout>
-        <div className="flex flex-row gap-8">
+        <div className="flex flex-row gap-4 py-8">
           <SummaryTotalAssetCard data={data} />
           <SummaryOtherAssets data={data} />
         </div>

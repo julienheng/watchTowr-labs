@@ -10,6 +10,7 @@ export default {
     extend: {
       fontFamily: {
         playfair: 'Playfair Display Variable, sans-serif',
+        oswald: 'Oswald Variable, sans-serif',
         lato: 'Lato, sans-serif',
       },
       color: {
@@ -19,7 +20,7 @@ export default {
         purple: '#a855f7',
         orange: '#f97316',
         blue: '#3b82f6',
-        pink: '#ec4899'
+        pink: '#ec4899',
       },
       screens: {
         mobile: { min: '320px', max: '567px' },

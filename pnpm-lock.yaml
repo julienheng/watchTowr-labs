@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource-variable/oswald':
+    specifier: ^5.0.18
+    version: 5.0.18
   '@fontsource-variable/playfair-display':
     specifier: ^5.0.19
     version: 5.0.19
@@ -597,6 +600,10 @@ packages:
     resolution: {integrity: sha512-gMsVel9D7f2HLkBma9VbtzZRehRogVRfbr++f06nL2vnCGCNlzOD+/MUov/F4p8myyAHspEhVobgjpX64q5m6A==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource-variable/oswald@5.0.18:
+    resolution: {integrity: sha512-+icoKbQ60VA+/aQ7MxdVCEZA/l/1KHaVdW7og3Q6+2Dp8RiY2Kv/EhC6ipC6vXNTlYJGXWkbP9/lMY3gJdbhQQ==}
+    dev: false
 
   /@fontsource-variable/playfair-display@5.0.19:
     resolution: {integrity: sha512-unFQVKMNGYuLeVxnP9ZX2GEyn+VvNYFG5Q5ScZOG8VFuo3z8bwwEMvwQQ2fCjfW/r3e0rmS/0+8tEGLbJEGAOQ==}
