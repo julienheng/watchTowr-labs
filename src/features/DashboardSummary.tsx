@@ -1,7 +1,7 @@
 import CardLayout from '../components/CardLayout';
 import {
   useAssetAffectedStore,
-  useAssetAssignedStore,
+  useAssetHuntedStore,
   useTotalAssetStore,
 } from '@/stores/assetCaseStore';
 import { Icon } from '@iconify/react';
@@ -11,8 +11,8 @@ interface DashboardSummaryProps {}
 
 const DashboardSummary: React.FC<DashboardSummaryProps> = () => {
   const totalAsset = useTotalAssetStore((state) => state.totalAsset);
-  const affectedCase = useAssetAffectedStore((state) => state.affectedCase);
-  const totalAssigned = useAssetAssignedStore((state) => state.assignedCase);
+  const totalAffected = useAssetAffectedStore((state) => state.affectedCase);
+  const totalHunted = useAssetHuntedStore((state) => state.huntedCase);
 
   const data = [
     {
@@ -25,16 +25,16 @@ const DashboardSummary: React.FC<DashboardSummaryProps> = () => {
     {
       title: 'Asset Affected',
       icon: 'solar:danger-circle-broken',
-      number: affectedCase,
+      number: totalAffected,
       textColor: 'text-orange-500',
       iconColor: '#f97316',
     },
     {
-      title: 'Asset Assigned',
+      title: 'Asset Hunted',
       icon: 'material-symbols-light:assignment-turned-in-outline',
-      number: totalAssigned,
-      textColor: 'text-pink-500',
-      iconColor: '#ec4899',
+      number: totalHunted,
+      textColor: 'text-purple-500',
+      iconColor: '#a855f7',
     },
   ];
 

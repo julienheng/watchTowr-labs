@@ -10,7 +10,6 @@ import {
 import CardLayout from '@/components/CardLayout';
 import {
   useAssetAffectedStore,
-  useAssetAssignedStore,
   useAssetHuntedStore,
   useTotalAssetStore,
 } from '@/stores/assetCaseStore';
@@ -32,7 +31,6 @@ interface DashboardPieChartProps {}
 const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
   const totalAsset = useTotalAssetStore((state) => state.totalAsset);
   const totalHunted = useAssetHuntedStore((state) => state.huntedCase);
-  const totalAssigned = useAssetAssignedStore((state) => state.assignedCase);
   const totalAffected = useAssetAffectedStore((state) => state.affectedCase);
   const security = useSecurityStore((state) => state.securityValue);
 
@@ -59,11 +57,6 @@ const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
       name: 'Assets Affected',
       value: totalAffected,
       color: '#f97316',
-    },
-    {
-      name: 'Assets Assigned',
-      value: totalAssigned,
-      color: '#ec4899',
     },
     {
       name: 'Assets Hunted',

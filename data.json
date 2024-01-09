@@ -35,7 +35,7 @@
       "port": "443/TCP",
       "technology": "Confluence Data Center",
       "version": "8.6.0",
-      "status": "vulnerable"
+      "status": ""
     },
     {
       "assetId": "A108",
@@ -45,7 +45,7 @@
       "port": "80/TCP",
       "technology": "Confluence Data Server",
       "version": "8.6.1",
-      "status": "vulnerable"
+      "status": ""
     },
     {
       "assetId": "A104",
@@ -55,7 +55,7 @@
       "port": "80/TCP",
       "technology": "Nodejs",
       "version": "14",
-      "status": "unaffected"
+      "status": ""
     },
     {
       "assetId": "A122",
@@ -65,7 +65,7 @@
       "port": "888/TCP",
       "technology": "Confluence Data Center",
       "version": "8.6.0",
-      "status": "vulnerable"
+      "status": ""
     },
     {
       "assetId": "A111",
@@ -75,7 +75,7 @@
       "port": "443/TCP",
       "technology": "Confluence Data Center",
       "version": "8.6.1",
-      "status": "vulnerable"
+      "status": ""
     },
     {
       "assetId": "A113",
@@ -85,7 +85,7 @@
       "port": "333/TCP",
       "technology": "Confluence Data Server",
       "version": "8.7.1",
-      "status": "fixed"
+      "status": ""
     },
     {
       "assetId": "A120",
@@ -95,7 +95,7 @@
       "port": "80/TCP",
       "technology": "Nodejs",
       "version": "14",
-      "status": "unaffected"
+      "status": ""
     },
     {
       "assetId": "A119",
@@ -105,7 +105,7 @@
       "port": "1818/TCP",
       "technology": "Confluence Data Server",
       "version": "8.6.1",
-      "status": "vulnerable"
+      "status": ""
     },
     {
       "assetId": "A106",
@@ -115,7 +115,7 @@
       "port": "443/TCP",
       "technology": "Confluence Data Center",
       "version": "8.6.0",
-      "status": "vulnerable"
+      "status": ""
     },
     {
       "assetId": "A115",
@@ -125,7 +125,7 @@
       "port": "80/TCP",
       "technology": "Nodejs",
       "version": "14",
-      "status": "fixed"
+      "status": ""
     }
   ]
 }
