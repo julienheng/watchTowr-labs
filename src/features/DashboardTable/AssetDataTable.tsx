@@ -1,4 +1,6 @@
 import { useAssetData } from '@/hooks/useFetchData';
+import { useAssetHuntedStore } from '@/stores/assetCaseStore';
+import { useAssetAffectedStore } from '@/stores/assetCaseStore';
 import {
   Table,
   TableHeader,
@@ -13,8 +15,13 @@ import { Checkbox } from '@nextui-org/react';
 
 const AssetDataTable = () => {
   const filteredItems = useFilteredItemsStore((state) => state.filteredItems);
+
   const { data: assetData } = useAssetData();
   const data = filteredItems.length > 0 ? filteredItems : assetData;
+  const addHuntedCase = useAssetHuntedStore((state) => state.addHuntedCase);
+  const subHuntedCase = useAssetHuntedStore((state) => state.subHuntedCase);
+  const huntedCase = useAssetHuntedStore((state) => state.huntedCase);
+  const totalAffected = useAssetAffectedStore((state) => state.affectedCase);
 
   const columns = [
     'Hunted',
@@ -30,20 +37,28 @@ const AssetDataTable = () => {
   const [huntedAssets, setHuntedAssets] = useState<string[]>([]);
 
   const handleRowClick = (assetId: string) => {
-    setHuntedAssets((prevHuntedAssets) =>
-      prevHuntedAssets.includes(assetId)
-        ? prevHuntedAssets.filter((id) => id !== assetId)
-        : [...prevHuntedAssets, assetId],
-    );
+    if (huntedCase < totalAffected) {
+      setHuntedAssets((prevHuntedAssets) =>
+        prevHuntedAssets.includes(assetId)
+          ? prevHuntedAssets.filter((id) => id !== assetId)
+          : [...prevHuntedAssets, assetId],
+      );
+      if (huntedAssets.includes(assetId) && huntedCase === 1) {
+        subHuntedCase();
+      } else {
+        addHuntedCase();
+      }
+    } else {
+    
+      if (huntedAssets.includes(assetId)) {
+        subHuntedCase();
+      }
+    }
   };
 
-  console.log(huntedAssets);
   return (
-    <div className="mx-auto max-w-5xl">
-      <Table
-        aria-label="Asset table"
-        className="mx-auto max-w-5xl"
-      >
+    <div className="mx-auto max-w-6xl">
+      <Table aria-label="Asset table" className="mx-auto max-w-6xl">
         <TableHeader>
           {columns.map((column) => (
             <TableColumn key={column}>{column}</TableColumn>
@@ -64,8 +79,10 @@ const AssetDataTable = () => {
               <TableRow
                 key={assetId}
                 className={`${
-                  version === '8.6.0' || version === '8.6.1' ? 'bg-red-100 text-red-500' : 'bg-white'
-                } ${huntedAssets.includes(assetId) ? 'bg-yellow-500' : ''}`}
+                  version === '8.6.0' || version === '8.6.1'
+                    ? ' hover:bg-red-200'
+                    : 'bg-white hover:bg-gray-100'
+                } ${huntedAssets.includes(assetId) ? '' : ''}`}
               >
                 <TableCell>
                   <Checkbox

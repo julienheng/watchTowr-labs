@@ -11,9 +11,10 @@ import CardLayout from '@/components/CardLayout';
 import {
   useAssetAffectedStore,
   useAssetHuntedStore,
+  useAssetSecuredStore,
   useTotalAssetStore,
 } from '@/stores/assetCaseStore';
-import { useSecurityStore } from '@/stores/securityStore';
+// import { useSecurityStore } from '@/stores/securityStore';
 
 type entryType = {
   name: string;
@@ -32,36 +33,38 @@ const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
   const totalAsset = useTotalAssetStore((state) => state.totalAsset);
   const totalHunted = useAssetHuntedStore((state) => state.huntedCase);
   const totalAffected = useAssetAffectedStore((state) => state.affectedCase);
-  const security = useSecurityStore((state) => state.securityValue);
-
+  const totalSecured = useAssetSecuredStore((state) => state.securedCase);
+  const security = totalAsset - totalAffected;
+  const threat = totalAffected - totalHunted;
+  
 
   const securityData: entryType = [
     {
       name: 'Security',
-      value: security - totalAffected,
-      color: '#22c55e',
+      value: security,
+      color: '#4ade80',
     },
     {
       name: 'Threat',
-      value: totalAffected,
-      color: '#ef4444',
+      value: threat,
+      color: '#f87171',
     },
   ];
   const data: entryType = [
     {
-      name: 'Total Assets',
-      value: totalAsset,
-      color: '#3b82f6',
+      name: 'Secured Assets',
+      value: totalSecured,
+      color: '#86efac',
     },
     {
-      name: 'Assets Affected',
-      value: totalAffected,
-      color: '#f97316',
+      name: 'Affected Assets',
+      value: totalAffected - totalHunted,
+      color: '#fca5a5',
     },
     {
-      name: 'Assets Hunted',
+      name: 'Hunted Assets',
       value: totalHunted,
-      color: '#a855f7',
+      color: '#fdba74',
     },
   ];
   const CustomTooltip = ({ payload }: { payload?: PayloadItem[] }) => {

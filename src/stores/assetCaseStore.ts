@@ -17,6 +17,8 @@ export const useTotalAssetStore = create<TotalAssetStore>((set) => ({
 type AssetHuntedStore = {
   huntedCase: number;
   setHuntedCase: (value: number) => void;
+  addHuntedCase: () => void;
+  subHuntedCase: () => void;
 };
 
 export const useAssetHuntedStore = create<AssetHuntedStore>((set) => ({
@@ -24,6 +26,13 @@ export const useAssetHuntedStore = create<AssetHuntedStore>((set) => ({
   setHuntedCase: (newCase: number) => {
     set({ huntedCase: newCase });
   },
+  addHuntedCase: () => {
+    set((state) => ({ huntedCase: state.huntedCase + 1 }));
+  },
+  subHuntedCase: () => {
+    set((state) => ({ huntedCase: state.huntedCase - 1 }));
+  },
+
 }));
 
 // AFFECTED ASSET CASES
@@ -38,6 +47,16 @@ export const useAssetAffectedStore = create<AssetAffectedStore>((set) => ({
     set({ affectedCase: newCase });
   },
 }));
+
+// SECURED ASSETS CASES
+type AssetSecuredStore = {
+  securedCase: number;
+};
+
+export const useAssetSecuredStore = create<AssetSecuredStore>(() => ({
+  securedCase: 4,
+}));
+
 
 // ASSIGNED ASSET CASES
 // type AssetAssignedStore = {
