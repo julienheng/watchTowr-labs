@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import { Card, CardBody } from '@nextui-org/react';
 
-interface SummaryTotalAssetCardProps {
+interface SummaryOtherAssetCardProps {
   data: {
     title: string;
     icon: string;
@@ -11,7 +11,9 @@ interface SummaryTotalAssetCardProps {
   }[];
 }
 
-const SummaryOtherAssets: React.FC<SummaryTotalAssetCardProps> = ({ data }) => {
+const SummaryOtherAssetCard: React.FC<SummaryOtherAssetCardProps> = ({
+  data,
+}) => {
   return (
     <Card className="p-3">
       <CardBody className="flex flex-row gap-8">
@@ -35,4 +37,4 @@ const SummaryOtherAssets: React.FC<SummaryTotalAssetCardProps> = ({ data }) => {
   );
 };
 
-export default SummaryOtherAssets;
+export default SummaryOtherAssetCard;
