@@ -7,7 +7,7 @@ import { TenantType } from '@/types/TenantType';
 export const useAssetData = () => {
   // const setThreatValue = useThreatStore((state) => state.setThreatValue);
 
-  const { data, isLoading, error } = useQuery<AssetType[]>(
+  const { data, isLoading, error, refetch } = useQuery<AssetType[]>(
     'assets',
     async () => {
       const response = await fetch('http://localhost:3000/assets');
@@ -16,8 +16,7 @@ export const useAssetData = () => {
     },
   );
 
-
-  return { data, isLoading, error };
+  return { data, isLoading, error, refetch };
 };
 
 export const useTenantData = () => {

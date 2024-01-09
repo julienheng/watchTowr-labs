@@ -11,17 +11,19 @@ import {
   CardBody,
 } from '@nextui-org/react';
 import { useFilteredItemsStore } from '@/stores/filterStore';
+import { useRiskStatusStore } from '@/stores/riskStatusStore';
 import { useState } from 'react';
 import { Checkbox } from '@nextui-org/react';
 
 const AssetDataTable = () => {
   const filteredItems = useFilteredItemsStore((state) => state.filteredItems);
-  const { data: assetData } = useAssetData();
+  const { data: assetData, refetch } = useAssetData();
   const data = filteredItems.length > 0 ? filteredItems : assetData;
   const { addHuntedCase, subHuntedCase } = useAssetHuntedStore();
+  const { riskStatus, setRiskStatus } = useRiskStatusStore();
 
   const columns = [
-    'Hunted',
+    'To Hunt',
     'Client',
     'Asset ID',
     'Asset',
@@ -49,12 +51,17 @@ const AssetDataTable = () => {
     if (isChecked && !isAlreadyHunted) {
       setHuntedAssets((prevHuntedAssets) => [...prevHuntedAssets, assetId]);
       addHuntedCase();
+      setRiskStatus(assetId, 'vulnerable');
+      refetch();
     } else if (isAlreadyHunted) {
       // If the asset is already hunted, unselect it
       setHuntedAssets((prevHuntedAssets) =>
         prevHuntedAssets.filter((id) => id !== assetId),
       );
       subHuntedCase();
+      setRiskStatus(assetId, '');
+      refetch();
+
     }
   };
 
@@ -103,7 +110,7 @@ const AssetDataTable = () => {
                   <TableCell>{subdomain ? subdomain : ip}</TableCell>
                   <TableCell>{technology}</TableCell>
                   <TableCell>{version}</TableCell>
-                  <TableCell>{status}</TableCell>
+                  <TableCell>{riskStatus[assetId] || status}</TableCell>
                 </TableRow>
               ),
             )}

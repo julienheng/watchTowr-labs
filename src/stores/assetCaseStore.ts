@@ -57,16 +57,3 @@ export const useAssetSecuredStore = create<AssetSecuredStore>(() => ({
   securedCase: 4,
 }));
 
-
-// ASSIGNED ASSET CASES
-// type AssetAssignedStore = {
-//   assignedCase: number;
-//   setAssignedCase: (value: number) => void;
-// };
-
-// export const useAssetAssignedStore = create<AssetAssignedStore>((set) => ({
-//   assignedCase: 0,
-//   setAssignedCase: (newCase: number) => {
-//     set({ assignedCase: newCase });
-//   },
-// }));
