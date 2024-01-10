@@ -7,7 +7,7 @@ interface SearchBarInputProps extends InputProps {
   value: string;
 }
 
-export const SearchBarInput: React.FC<SearchBarInputProps> = ({
+const SearchBarInput: React.FC<SearchBarInputProps> = ({
   handleSearch,
   onSearch,
   value,
@@ -35,3 +35,5 @@ export const SearchBarInput: React.FC<SearchBarInputProps> = ({
     {...props}
   />
 );
+
+export default SearchBarInput;

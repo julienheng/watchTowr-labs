@@ -1,5 +1,3 @@
-import { useAssetData } from '@/hooks/useFetchData';
-import { useAssetHuntedStore } from '@/stores/assetCaseStore';
 import {
   Table,
   TableHeader,
@@ -9,61 +7,29 @@ import {
   TableCell,
   Card,
   CardBody,
+  Checkbox,
 } from '@nextui-org/react';
+import { useHandleHunt } from '@/hooks/useHandleHunt';
+import { useAssetData } from '@/hooks/useFetchData';
 import { useFilteredItemsStore } from '@/stores/filterStore';
-import { useRiskStatusStore } from '@/stores/riskStatusStore';
-import { useState } from 'react';
-import { Checkbox } from '@nextui-org/react';
+
+const columns = [
+  'To Hunt',
+  'Client',
+  'Asset ID',
+  'Asset',
+  'Asset Type ',
+  'Technology',
+  'Version',
+  'Risk Status',
+];
 
 const AssetDataTable = () => {
   const filteredItems = useFilteredItemsStore((state) => state.filteredItems);
-  const { data: assetData, refetch } = useAssetData();
+  const { data: assetData } = useAssetData();
   const data = filteredItems.length > 0 ? filteredItems : assetData;
-  const { addHuntedCase, subHuntedCase } = useAssetHuntedStore();
-  const { riskStatus, setRiskStatus } = useRiskStatusStore();
 
-  const columns = [
-    'To Hunt',
-    'Client',
-    'Asset ID',
-    'Asset',
-    'Asset Type ',
-    'Technology',
-    'Version',
-    'Risk Status',
-  ];
-
-  const [huntedAssets, setHuntedAssets] = useState<string[]>([]);
-
-  const handleRowClick = (assetId: string, version: string) => {
-    const affectedVersion = version === '8.6.0' || version === '8.6.1';
-
-    // Check if the asset is among the affected assets or has the required version
-    const isChecked =
-      data?.some(
-        (asset) => asset.assetId === assetId && asset.status === 'vulnerable',
-      ) || affectedVersion;
-
-    // Check if the asset is already hunted
-    const isAlreadyHunted = huntedAssets.includes(assetId);
-
-    // If the asset is selectable, update the hunted assets
-    if (isChecked && !isAlreadyHunted) {
-      setHuntedAssets((prevHuntedAssets) => [...prevHuntedAssets, assetId]);
-      addHuntedCase();
-      setRiskStatus(assetId, 'vulnerable');
-      refetch();
-    } else if (isAlreadyHunted) {
-      // If the asset is already hunted, unselect it
-      setHuntedAssets((prevHuntedAssets) =>
-        prevHuntedAssets.filter((id) => id !== assetId),
-      );
-      subHuntedCase();
-      setRiskStatus(assetId, '');
-      refetch();
-
-    }
-  };
+  const { handleRowClick, riskStatus, huntedAssets } = useHandleHunt();
 
   return (
     <Card className="mx-auto max-w-6xl p-6 ">

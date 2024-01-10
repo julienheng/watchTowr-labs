@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Cell,
   Legend,
@@ -7,66 +6,19 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from 'recharts';
+import { usePieChartData } from '@/hooks/usePieChartData';
 import CardLayout from '@/components/CardLayout';
-import {
-  useAssetAffectedStore,
-  useAssetHuntedStore,
-  useAssetSecuredStore,
-  useTotalAssetStore,
-} from '@/stores/assetCaseStore';
-// import { useSecurityStore } from '@/stores/securityStore';
-
-type entryType = {
-  name: string;
-  value: number;
-  color: string;
-}[];
 
 interface PayloadItem {
   value: number;
   name: string;
-}
+}[]
 
 interface DashboardPieChartProps {}
 
 const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
-  const totalAsset = useTotalAssetStore((state) => state.totalAsset);
-  const totalHunted = useAssetHuntedStore((state) => state.huntedCase);
-  const totalAffected = useAssetAffectedStore((state) => state.affectedCase);
-  const totalSecured = useAssetSecuredStore((state) => state.securedCase);
-  const security = totalAsset - totalAffected;
-  const threat = totalAffected - totalHunted;
-  
+  const { assetPieData, securityPieData } = usePieChartData();
 
-  const securityData: entryType = [
-    {
-      name: 'Security',
-      value: security,
-      color: '#4ade80',
-    },
-    {
-      name: 'Threat',
-      value: threat,
-      color: '#f87171',
-    },
-  ];
-  const data: entryType = [
-    {
-      name: 'Secured Assets',
-      value: totalSecured,
-      color: '#86efac',
-    },
-    {
-      name: 'Affected Assets',
-      value: totalAffected - totalHunted,
-      color: '#fca5a5',
-    },
-    {
-      name: 'Hunted Assets',
-      value: totalHunted,
-      color: '#fdba74',
-    },
-  ];
   const CustomTooltip = ({ payload }: { payload?: PayloadItem[] }) => {
     if (payload) {
       return (
@@ -80,11 +32,13 @@ const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
   return (
     <CardLayout>
       <div className="w-[450px] p-2">
-        {/* <h1 className="font-playfair font-semibold text-center text-xl">Security Progress</h1> */}
+        <h1 className="font-oswald text-center text-xl font-semibold">
+          Security Progress
+        </h1>
         <ResponsiveContainer width="100%" height={240}>
           <PieChart>
             <Pie
-              data={data}
+              data={assetPieData}
               nameKey="duration"
               dataKey="value"
               outerRadius={70}
@@ -92,7 +46,7 @@ const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
               cy="50%"
               paddingAngle={3}
             >
-              {data.map((entry) => (
+              {assetPieData.map((entry) => (
                 <Cell
                   fill={entry.color}
                   stroke={entry.color}
@@ -101,7 +55,7 @@ const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
               ))}
             </Pie>
             <Pie
-              data={securityData}
+              data={securityPieData}
               nameKey="duration"
               dataKey="value"
               innerRadius={90}
@@ -110,7 +64,7 @@ const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
               cy="50%"
               paddingAngle={3}
             >
-              {securityData.map((entry) => (
+              {securityPieData.map((entry) => (
                 <Cell
                   fill={entry.color}
                   stroke={entry.color}

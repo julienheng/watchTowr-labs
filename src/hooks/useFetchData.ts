@@ -1,11 +1,8 @@
 import { useQuery } from 'react-query';
 import { AssetType } from '@/types/AssetType';
 import { TenantType } from '@/types/TenantType';
-// import { useThreatStore } from '@/stores/threatStateStore';
-// import { useAssetStateStore } from '@/stores/assetStateStore';
 
 export const useAssetData = () => {
-  // const setThreatValue = useThreatStore((state) => state.setThreatValue);
 
   const { data, isLoading, error, refetch } = useQuery<AssetType[]>(
     'assets',

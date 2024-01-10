@@ -1,4 +1,3 @@
-
 interface DashboardTitleProps { }
 
 const DashboardTitle: React.FC<DashboardTitleProps> = () => {
