@@ -32,7 +32,7 @@ const DashboardPieChart: React.FC<DashboardPieChartProps> = () => {
   return (
     <CardLayout>
       <div className="w-[450px] p-2">
-        <h1 className="font-oswald text-center text-xl font-semibold">
+        <h1 className="uppercase font-oswald tracking-wide text-center text-2xl font-semibold">
           Security Progress
         </h1>
         <ResponsiveContainer width="100%" height={240}>

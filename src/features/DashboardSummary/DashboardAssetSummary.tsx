@@ -12,7 +12,10 @@ const DashboardAssetSummary: React.FC<DashboardAssetSummaryProps> = () => {
 
   return (
     <CardLayout>
-      <div className="flex flex-row gap-4 py-8">
+      <h1 className="uppercase tracking-wide font-oswald text-center text-2xl font-semibold">
+        asset summary
+      </h1>
+      <div className="flex flex-row gap-4 py-6">
         <SummaryTotalAssetCard data={data} />
         <SummaryOtherAssets data={data} />
       </div>
