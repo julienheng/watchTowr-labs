@@ -14,6 +14,7 @@ import { AssetType } from '@/types/AssetType';
 interface AllAssetDataTableProps {
   data: AssetType[];
   handleAssetDetail: (assetId: string) => void;
+  isVulnerable: (version: string) => boolean;
 }
 
 const columns = [
@@ -30,6 +31,7 @@ const columns = [
 const AllAssetDataTable: React.FC<AllAssetDataTableProps> = ({
   handleAssetDetail,
   data,
+  isVulnerable,
 }) => {
   const { handleRowClick, riskStatus, huntedAssets } = useHandleHunt();
   const filteredItems = useFilteredItemsStore((state) => state.filteredItems);
@@ -37,7 +39,7 @@ const AllAssetDataTable: React.FC<AllAssetDataTableProps> = ({
 
   return (
     <>
-      <h1 className="font-oswald mx-auto text-center text-2xl font-semibold uppercase">
+      <h1 className="mx-auto text-center font-oswald text-2xl font-semibold uppercase">
         Asset Detail Table
       </h1>
       <Table aria-label="Asset table" className="mx-auto my-6 max-w-6xl">
@@ -62,7 +64,7 @@ const AllAssetDataTable: React.FC<AllAssetDataTableProps> = ({
                 key={assetId}
                 onClick={() => handleAssetDetail(assetId)}
                 className={`${
-                  version === '8.6.0' || version === '8.6.1'
+                  isVulnerable(version)
                     ? ' cursor-pointer hover:bg-red-100 hover:text-red-500'
                     : 'cursor-pointer bg-white hover:bg-gray-100'
                 } ${
@@ -80,7 +82,7 @@ const AllAssetDataTable: React.FC<AllAssetDataTableProps> = ({
                 <TableCell>{client}</TableCell>
                 <TableCell>{assetId}</TableCell>
                 <TableCell>{assetName}</TableCell>
-                <TableCell>{subdomain ? subdomain : ip}</TableCell>
+                <TableCell>{subdomain || ip}</TableCell>
                 <TableCell>{technology}</TableCell>
                 <TableCell>{version}</TableCell>
                 <TableCell>{riskStatus[assetId] || status}</TableCell>

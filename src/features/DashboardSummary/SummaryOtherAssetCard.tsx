@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react';
-import { Card, CardBody } from '@nextui-org/react';
+import CardLayout from '@/components/CardLayout';
 
 interface SummaryOtherAssetCardProps {
   data: {
@@ -15,8 +15,8 @@ const SummaryOtherAssetCard: React.FC<SummaryOtherAssetCardProps> = ({
   data,
 }) => {
   return (
-    <Card className="p-3">
-      <CardBody className="flex flex-row gap-8">
+    <CardLayout>
+      <div className="flex flex-row gap-8">
         {data
           .slice(1)
           .map(({ title, icon, number, textColor, iconColor }, index) => (
@@ -32,8 +32,8 @@ const SummaryOtherAssetCard: React.FC<SummaryOtherAssetCardProps> = ({
               </div>
             </div>
           ))}
-      </CardBody>
-    </Card>
+      </div>
+    </CardLayout>
   );
 };
 

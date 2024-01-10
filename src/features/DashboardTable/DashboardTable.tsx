@@ -1,39 +1,36 @@
 import { Card, CardBody } from '@nextui-org/react';
 import { useAssetData } from '@/hooks/useFetchData';
-import { useState } from 'react';
-import { AssetType } from '@/types/AssetType';
+import { useSelectedAssetStore } from '@/stores/selectedAssetStore';
 
 // COMPONENTS
-import AssetDetailTable from './AssetDetailDataTable';
+import AssetDetailDataTable from './AssetDetailDataTable';
 import AllAssetDataTable from './AllAssetDataTable';
 
 const DashboardTable = () => {
   const { data: assetData } = useAssetData();
-  const [selectedAsset, setSelectedAsset] = useState<AssetType[]>([]);
+  const { selectedAsset, setSelectedAsset } = useSelectedAssetStore();
+  const isVulnerable = (version: string) =>
+    version === '8.6.0' || version === '8.6.1';
 
   const handleAssetDetail = (assetId: string) => {
     const asset = assetData?.filter((asset) => asset.assetId === assetId);
     setSelectedAsset(asset || []);
   };
 
+  const isAssetDetailSelected = selectedAsset.length > 0;
+
   return (
     <Card
-      className={`${
-        selectedAsset.length > 0
-          ? 'mx-auto max-w-2xl p-4'
-          : 'mx-auto max-w-6xl p-4 '
-      } `}
+      className={`mx-auto max-w-${isAssetDetailSelected ? '2xl' : '6xl'} p-4`}
     >
-      <CardBody className="">
+      <CardBody>
         {selectedAsset.length > 0 ? (
-          <AssetDetailTable
-            selectedAsset={selectedAsset}
-            setSelectedAsset={setSelectedAsset}
-          />
+          <AssetDetailDataTable />
         ) : (
           <AllAssetDataTable
             data={assetData || []}
             handleAssetDetail={handleAssetDetail}
+            isVulnerable={isVulnerable}
           />
         )}
       </CardBody>
