@@ -1,5 +1,5 @@
 // COMPONENTS
-import DashboardTable from '@/features/DashboardTable/AssetDataTable';
+import DashboardTable from '@/features/DashboardTable/DashboardTable';
 import DashboardTitle from '../features/DashboardTitle';
 import DashboardAssetSummary from '@/features/DashboardSummary/DashboardSummary';
 
