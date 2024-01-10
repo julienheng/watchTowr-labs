@@ -4,7 +4,7 @@ import { useAssetData } from '@/hooks/useFetchData';
 import { AssetType } from '@/types/AssetType';
 
 // COMPONENTS
-import  SearchBarInput  from '@/components/SearchBarInput';
+import SearchBarInput from '@/components/SearchBarInput';
 
 const filterFields = [
   'assetId',
