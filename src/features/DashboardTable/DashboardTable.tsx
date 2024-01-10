@@ -7,7 +7,7 @@ import { AssetType } from '@/types/AssetType';
 import AssetDetailTable from './AssetDetailDataTable';
 import AllAssetDataTable from './AllAssetDataTable';
 
-const AssetDataTable = () => {
+const DashboardTable = () => {
   const { data: assetData } = useAssetData();
   const [selectedAsset, setSelectedAsset] = useState<AssetType[]>([]);
 
@@ -19,7 +19,9 @@ const AssetDataTable = () => {
   return (
     <Card
       className={`${
-        selectedAsset.length > 0 ? 'mx-auto max-w-2xl p-4' : 'mx-auto max-w-6xl p-4 '
+        selectedAsset.length > 0
+          ? 'mx-auto max-w-2xl p-4'
+          : 'mx-auto max-w-6xl p-4 '
       } `}
     >
       <CardBody className="">
@@ -39,4 +41,4 @@ const AssetDataTable = () => {
   );
 };
 
-export default AssetDataTable;
+export default DashboardTable;

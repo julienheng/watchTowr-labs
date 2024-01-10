@@ -1,8 +1,8 @@
 import { AssetType } from '@/types/AssetType';
 import { Card, CardBody } from '@nextui-org/react';
 import { Icon } from '@iconify/react';
-import { useTenantData } from '@/hooks/useFetchData';
 import { useRiskStatusStore } from '@/stores/riskStatusStore';
+
 
 interface AssetDetailTableProps {
   selectedAsset: AssetType[];
@@ -14,17 +14,13 @@ const AssetDetailTable: React.FC<AssetDetailTableProps> = ({
   setSelectedAsset,
 }) => {
   const riskStatus = useRiskStatusStore((state) => state.riskStatus);
-  const { data: tenantData } = useTenantData();
-  console.log(tenantData);
-  const x = tenantData?.map((tenant) => tenant);
-  console.log(x);
 
   return (
     <>
       <div className="flex items-center">
         <Icon
           onClick={() => setSelectedAsset([])}
-          className="cursor-pointer hover:text-blue-500"
+          className="cursor-pointer hover:text-gray-500"
           icon="ion:chevron-back-circle-outline"
           style={{ fontSize: '40px' }}
         />
@@ -61,6 +57,7 @@ const AssetDetailTable: React.FC<AssetDetailTableProps> = ({
                   >
                     {riskStatus[assetId] || status}
                   </p>
+                  
                 </div>
                 <div className="rounded-b-xl bg-neutral-100 p-3">
                   <p className="text-xl font-semibold">{client}</p>
