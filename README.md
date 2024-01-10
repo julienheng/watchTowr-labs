@@ -24,7 +24,7 @@ I began by carefully reviewing the requirements of assignments, studied and iden
 - Users can assign affected assets to "Hunt" by checking the checkbox.
 
 4. **Challenge**
-The notable challenge encountered during this assessment was formulating an accurate and effective data structure that related to cybersecurity. The role extended to create an intuitive approach for visualizing and implementing this data onto the user interface. Addressing this challenge required a deep understanding of cybersecurity nuances and data integration that could be best represented and interacted with on the UI.
+- The notable challenge encountered during this assessment was formulating an accurate and effective data structure that related to cybersecurity. The role extended to create an intuitive approach for visualizing and implementing this data onto the user interface. Addressing this challenge required a deep understanding of cybersecurity nuances and data integration that could be best represented and interacted with on the UI.
 
 ### Technology Stack
 
